@@ -1,0 +1,6 @@
+#!/bin/sh
+D=/c/Users/Diana/pg/cfront-3
+cat > $D/w_stdin
+env | sort > $D/w_env.log
+echo "PWD=$(pwd)" >> $D/w_env.log
+exec $D/cfront_real.exe "$@" < $D/w_stdin

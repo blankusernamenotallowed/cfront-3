@@ -44,7 +44,7 @@ Ptfct  templ_fct::ptfct_free = 0;
 
 void* chunk(int i)	// get memory that is not to be freed
 {
-	register char* cp = (char*)malloc(i*CHUNK-8);
+	register char* cp = (char*)calloc(i*CHUNK-8,1);	// zeroed: avoid uninitialized reads on 64-bit
 	if (cp == 0) {			// no space
 		free((char*)gtbl);	// get space for error message
 		error('i',"free store exhausted");

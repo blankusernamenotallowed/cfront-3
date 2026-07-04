@@ -41,7 +41,9 @@
 	TINYCC=$(which tcc)
 	if test -z "$TINYCC"
 	then
-	  ccC="gcc -w"
+	  # cfront emits pre-ANSI/K&R C (implicit int, implicit decls); build it
+	  # in legacy mode so modern gcc accepts it.
+	  ccC="gcc -w -std=gnu89 -fno-builtin"
 	  cppC="gcc -Du3b -U__GNUC__ -D__cfront__ -D__cplusplus=1 -D__signed__= -D__null=0 -E"
 	else
 	  ccC="tcc -w"

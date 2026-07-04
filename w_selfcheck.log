@@ -1,0 +1,2 @@
+
+WRAP run1_err=15 run2_err=15 args=[+L +f../new/_arr_map.C +T../../tmpdir/CC.447/dirinst +s +t../../tmpdir/CC.447/ptcf +a1]

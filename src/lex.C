@@ -211,9 +211,12 @@ int saved = 0;	/* putback character, avoid ungetchar */
 static int lxtitle();
 
 // overload rt;
-inline YYSTYPE rt(char* x) { YYSTYPE y; y.s  = x;        return y; }
-inline YYSTYPE rt(int   x) { YYSTYPE y; y.t  = x;        return y; }
-inline YYSTYPE rt(loc   x) { YYSTYPE y; y.l  = x;        return y; }
+// NB: zero the whole union first. On LP64 the pointer members are 8 bytes but
+// y.t/y.l only write 4/low bytes; without this the high bytes are stack garbage
+// and a later read of the value as a pointer yields a layout-dependent bad ptr.
+inline YYSTYPE rt(char* x) { YYSTYPE y; y.pe = 0; y.s  = x;        return y; }
+inline YYSTYPE rt(int   x) { YYSTYPE y; y.pe = 0; y.t  = x;        return y; }
+inline YYSTYPE rt(loc   x) { YYSTYPE y; y.pe = 0; y.l  = x;        return y; }
 //inline YYSTYPE rt(void* x) { YYSTYPE y; y.pn = Pname(x); return y; }
 
 #ifdef DBG

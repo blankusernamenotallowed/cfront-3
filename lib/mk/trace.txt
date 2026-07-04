@@ -1,0 +1,219 @@
+++ dirname ../../CC
++ CF=../..
++ CCROOTDIR=../..
++ CCLIBDIR=../..
++ TMPDIR=../../tmpdir
++ AON=+a1
++ LINE_OPT=+L
++ LIBRARY=../../libC.a
++ NMFLAGS=
++ DEMANGLE=1
++ PLUSI=0
++ cfrontC=../../cfront
++ munch=../../munch
++ cplusfiltC='../../c++filt}'
++ I=../../incl
++ LIBRARY=../../libC.a
+++ which tcc
+which: no tcc in (/usr/bin:/c/Users/Diana/pg/cfront-3:/c/Users/Diana/bin:/c/Program Files/Git/mingw64/bin:/c/Program Files/Git/usr/local/bin:/c/Program Files/Git/usr/bin:/c/Program Files/Git/usr/bin:/c/Program Files/Git/mingw64/bin:/c/Program Files/Git/usr/bin:/c/Users/Diana/bin:/c/Python314/Scripts:/c/Python314:/c/Program Files/Python313/Scripts:/c/Program Files/Python313:/c/VulkanSDK/1.4.321.1/Bin:/c/Windows/system32:/c/Windows:/c/Windows/System32/Wbem:/c/Windows/System32/WindowsPowerShell/v1.0:/c/Windows/System32/OpenSSH:/c/Program Files/Git/cmd:/c/Program Files/Microsoft VS Code Insiders/bin:/c/ProgramData/chocolatey/bin:/c/Program Files/dotnet:/c/Program Files/nodejs:/c/Users/Diana/AppData/Local/Pub/Cache/bin:/c/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit:/c/Users/Diana/AppData/Local/Programs/OpenAI/Codex/bin:/c/Program Files/Git/usr/bin:/c/Users/Diana/bin:/c/Program Files/Void/bin:/c/Program Files/Microsoft VS Code/bin:/c/Users/Diana/AppData/Local/Microsoft/WindowsApps:/c/Users/Diana/.dotnet/tools:/mingw64/bin:/c/Users/Diana/AppData/Local/Programs/Microsoft VS Code Insiders/bin:/c/Program Files/opencode-windows-x64:/c/Users/Diana/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand:/c/Users/Diana/Documents/ffmpeg/bin:/c/users/diana/.local/bin:/c/Program Files/Microsoft Visual Studio/18/Insiders/MSBuild/Current/Bin/amd64:/c/Users/Diana/AppData/Roaming/npm:/c/Program Files/Microsoft Visual Studio/18/Insiders/VC/vcpkg:/c/Users/Diana/flt/flutter/bin:/c/Users/Diana/AppData/Local/PowerToys/DSCModules:/c/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/MSBuild/Current/Bin/amd64:/c/Program Files/Git/usr/bin/vendor_perl:/c/Program Files/Git/usr/bin/core_perl:/c/Users/Diana/.claude/plugins/cache/impeccable/impeccable/1.6.0/bin)
++ TINYCC=
++ test -z ''
++ ccC='gcc -w'
++ cppC='gcc -Du3b -U__GNUC__ -D__cfront__ -D__cplusplus=1 -D__signed__= -D__null=0 -E'
++ PTPATH='/usr/bin:/c/Users/Diana/pg/cfront-3:/c/Users/Diana/bin:/c/Program Files/Git/mingw64/bin:/c/Program Files/Git/usr/local/bin:/c/Program Files/Git/usr/bin:/c/Program Files/Git/usr/bin:/c/Program Files/Git/mingw64/bin:/c/Program Files/Git/usr/bin:/c/Users/Diana/bin:/c/Python314/Scripts:/c/Python314:/c/Program Files/Python313/Scripts:/c/Program Files/Python313:/c/VulkanSDK/1.4.321.1/Bin:/c/Windows/system32:/c/Windows:/c/Windows/System32/Wbem:/c/Windows/System32/WindowsPowerShell/v1.0:/c/Windows/System32/OpenSSH:/c/Program Files/Git/cmd:/c/Program Files/Microsoft VS Code Insiders/bin:/c/ProgramData/chocolatey/bin:/c/Program Files/dotnet:/c/Program Files/nodejs:/c/Users/Diana/AppData/Local/Pub/Cache/bin:/c/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit:/c/Users/Diana/AppData/Local/Programs/OpenAI/Codex/bin:/c/Program Files/Git/usr/bin:/c/Users/Diana/bin:/c/Program Files/Void/bin:/c/Program Files/Microsoft VS Code/bin:/c/Users/Diana/AppData/Local/Microsoft/WindowsApps:/c/Users/Diana/.dotnet/tools:/mingw64/bin:/c/Users/Diana/AppData/Local/Programs/Microsoft VS Code Insiders/bin:/c/Program Files/opencode-windows-x64:/c/Users/Diana/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand:/c/Users/Diana/Documents/ffmpeg/bin:/c/users/diana/.local/bin:/c/Program Files/Microsoft Visual Studio/18/Insiders/MSBuild/Current/Bin/amd64:/c/Users/Diana/AppData/Roaming/npm:/c/Program Files/Microsoft Visual Studio/18/Insiders/VC/vcpkg:/c/Users/Diana/flt/flutter/bin:/c/Users/Diana/AppData/Local/PowerToys/DSCModules:/c/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/MSBuild/Current/Bin/amd64:/c/Program Files/Git/usr/bin/vendor_perl:/c/Program Files/Git/usr/bin/core_perl:/c/Users/Diana/.claude/plugins/cache/impeccable/impeccable/1.6.0/bin'
++ CCROOTDIR=../..
++ CCLIBDIR=../..
++ I=../../incl
++ AON=+a1
++ LINE_OPT=+L
++ LOPT=-L
++ DEMANGLE=1
++ LIB_ID=C
++ LIBRARY=../../libC.a
++ test ../.. '!=' ''
++ CCROOTDIR=../../
++ cfrontC=../../cfront
++ PM_FLAG=MUNCH
++ test MUNCH = PATCH
++ munchC=../../munch
++ NM=nm
++ NMFLAGS=
++ cplusfiltC='../../c++filt}'
++ ccC='gcc -w'
++ CPPFLAGS=
++ cppC='gcc -Du3b -U__GNUC__ -D__cfront__ -D__cplusplus=1 -D__signed__= -D__null=0 -E'
++ FS=0
++ LPPEXPAND='-lg2++ -lGA -lGraph -l++'
++ ptrdef=./ptrepository
++ ptr=./ptrepository
++ ptdmap=defmap
++ ptroot=../../
++ ptcompC=../../ptcomp
++ ptlinkC=../../ptlink
++ ptdef=
++ ptflags=
++ ptflags2=
++ ptflags3=
++ ptrlist=
++ ptscnt=0
++ ptT=
++ ptn=0
++ clg=0
++ ptrflag=0
++ ptiflag=0
++ ptd=0
++ PTHDR='.h, .H, .hxx, .HXX, .hh, .HH, .hpp'
++ PTSRC='.c, .C, .cxx, .CXX, .cc, .CC, .cpp'
++ test ../.. = /usr/lib
++ test -d /usr/alliant
++ LLIBPATH=-L../..
++ export CCROOTDIR
++ export cppC
++ CPLUS=-Dc_plusplus=1
++ cPLUS=-D__cplusplus=1
+++ expr ../../incl : '.*:\([^:]*\)' '|' ../../incl
++ CPLUSPLUS_LICENSE_FILE=../../incl/CPLUSPLUS.dat
++ CPLUSPLUS_LICENSE_WARNING=45
++ export CPLUSPLUS_LICENSE_FILE CPLUSPLUS_LICENSE_WARNING
++ IDIRS=
++ '[' ../../incl '!=' '' ']'
+++ echo ../../incl
+++ sed 's/:.*$//'
++ idir=../../incl
++ '[' ../../incl = '' ']'
++ IDIRS=' -I../../incl'
++ case "$I" in
++ I=
++ '[' '' '!=' '' ']'
++ TMPDIR=../../tmpdir
++ TEMPDIR=../../tmpdir/CC.1564
++ C=
++ EE=0
++ FON=
++ XON=
++ O=
++ EON=0
++ EC=
++ EL=
++ ELISTC=
++ ELISTL=
++ PTLISTC=
++ PON=
++ R=
++ SUF=
++ X=
++ DASHR=
++ STRIP=
++ PLUSI=1
++ Z=
++ E=0
++ OF=
++ P=
++ ION=
++ NOLOAD=
++ NLO=
++ AFAIL=0
++ OO=a.out
++ OON=
++ dotCcount=0
++ FINALNAME=a.out
++ ISUF=.c
++ MVLIST=
++ APASS=0
++ defmem=D
++ deflist=
++ Y=
++ rm -fr ../../tmpdir/CC.1564
++ trap 'rm -fr $TEMPDIR; exit' 1 2 3 13 15
++ mkdir ../../tmpdir/CC.1564
++ E=0
++ test 0 -ne 0
++ for A in $PTOPTS "$@"
++ case $A in
++ test
++ for A in $PTOPTS "$@"
++ case $A in
++ test -I../../incl '!=' -I
++ Y=' -I../../incl'
++ for A in $PTOPTS "$@"
++ case $A in
++ test '' '!=' .i
++ test '' '!=' .s
++ NOLOAD=.o
++ NLO=-c
++ for A in $PTOPTS "$@"
++ case $A in
++ '[' 0 -eq 0 ']'
++ ptscnt=1
+++ expr 0 + 1
++ dotCcount=1
++ test .o '!=' '' -a '' = 1 -a 1 -gt 1
++ test +a1 = +a1
++ Y=' -I../../incl -D__CFRONT_ANSI_OPT'
++ for A in "$@"
++ case $A in
++ test
++ test
++ test 0 -eq 1
++ test 0 -eq 2
++ Z=' -O'
++ test
++ X=' -O'
++ for A in "$@"
++ case $A in
++ test -I../../incl = -I
++ for A in "$@"
++ case $A in
++ for A in "$@"
++ case $A in
++ test -f ../new/_arr_map.C
++ case $A in
+++ basename ../new/_arr_map.C .C
++ B=_arr_map
++ CXX_FILE=1
++ test
++ test
++ test 1 '!=' 1
++ echo 'CC  ../new/_arr_map.C:'
+CC  ../new/_arr_map.C:
++ eval '$cppC' '$Y' '$CPLUS' '$cPLUS' '$SYS' '$IDIRS' '$A' '>../../tmpdir/CC.1564/cpptmp'
+++ gcc -Du3b -U__GNUC__ -D__cfront__ -D__cplusplus=1 -D__signed__= -D__null=0 -E -I../../incl -D__CFRONT_ANSI_OPT -Dc_plusplus=1 -D__cplusplus=1 -I../../incl ../new/_arr_map.C
+<command-line>: warning: '__cplusplus' redefined
+<built-in>: note: this is the location of the previous definition
++ E=0
++ test 0 -ne 0
++ '[' '' = '' -a 1 -eq 1 -a -c '!=' -c -a 0 -eq 0 ']'
++ '[' 0 -eq 1 ']'
++ '[' '' '!=' '' ']'
++ x=../../tmpdir/CC.1564/dirinst
++ echo @none
++ x='+T../../tmpdir/CC.1564/dirinst +s'
++ ../../cfront +L +f../new/_arr_map.C +T../../tmpdir/CC.1564/dirinst +s +t../../tmpdir/CC.1564/ptcf +a1
+"../new/_arr_map.C", line 73: error: syntax error
+"../new/_arr_map.C", line 73: error: syntax error
+"../new/_arr_map.C", line 81: error: syntax error
+"../new/_arr_map.C", line 81: error: syntax error
+"../new/_arr_map.C", line 84: error: friend class RECORD{...} -- may only declare a friend class
+"../new/_arr_map.C", line 102: error: syntax error
+"../new/_arr_map.C", line 88: error: syntax error
+"../new/_arr_map.C", line 88: error: syntax error
+"../new/_arr_map.C", line 90: error: syntax error
+"../new/_arr_map.C", line 90: error: syntax error
+"../new/_arr_map.C", line 90: error: syntax error
+"../new/_arr_map.C", line 90: error: syntax error
+"../new/_arr_map.C", line 91: error: syntax error
+"../new/_arr_map.C", line 91: error:  name expected in declaration list
+Sorry, too many errors
++ E=14
++ R=1
++ C=' ../../tmpdir/CC.1564/_arr_map.c'
++ case $E in
++ echo '14 errors'
+14 errors
++ AFAIL=1
++ case $APASS in
++ test 1
++ test 1
++ rm -fr ../../tmpdir/CC.1564
++ test 1 -ne 0
++ exit 1

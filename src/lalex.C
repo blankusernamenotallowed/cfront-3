@@ -427,7 +427,7 @@ la_look()
     return latok->tok;
 }
 
-#define NEXTTOK() ( (yychar==-1) ? (yychar=lalex(),yychar) : yychar )
+#define NEXTTOK() ( (yychar<0) ? (yychar=lalex(),yychar) : yychar )
 void
 check_decl()
 /*

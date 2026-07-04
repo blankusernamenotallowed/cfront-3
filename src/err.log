@@ -1,0 +1,111 @@
+In file included from main.C:26:
+../incl/stdlib.h:9:13: warning: declaration of 'void* calloc(unsigned int, unsigned int)' conflicts with built-in declaration 'void* calloc(long unsigned int, long unsigned int)' [-Wbuiltin-declaration-mismatch]
+    9 |     void*   calloc (unsigned,unsigned);
+      |             ^~~~~~
+../incl/stdlib.h:13:13: warning: declaration of 'void* malloc(unsigned int)' conflicts with built-in declaration 'void* malloc(long unsigned int)' [-Wbuiltin-declaration-mismatch]
+   13 |     void*   malloc (unsigned);
+      |             ^~~~~~
+../incl/stdlib.h:15:13: warning: declaration of 'void* realloc(void*, unsigned int)' conflicts with built-in declaration 'void* realloc(void*, long unsigned int)' [-Wbuiltin-declaration-mismatch]
+   15 |     void*   realloc (void*, unsigned);
+      |             ^~~~~~~
+In file included from main.C:30:
+../incl/string.h:7:10: warning: declaration of 'char* strncpy(char*, const char*, int)' conflicts with built-in declaration 'char* strncpy(char*, const char*, long unsigned int)' [-Wbuiltin-declaration-mismatch]
+    7 |         *strncpy(char*, const char*, int),
+      |          ^~~~~~~
+../incl/string.h:9:10: warning: declaration of 'char* strncat(char*, const char*, int)' conflicts with built-in declaration 'char* strncat(char*, const char*, long unsigned int)' [-Wbuiltin-declaration-mismatch]
+    9 |         *strncat(char*, const char*, int),
+      |          ^~~~~~~
+../incl/string.h:10:10: warning: declaration of 'char* strchr(const char*, char)' conflicts with built-in declaration 'char* strchr(const char*, int)' [-Wbuiltin-declaration-mismatch]
+   10 |         *strchr(const char*, char),
+      |          ^~~~~~
+../incl/string.h:11:10: warning: declaration of 'char* strrchr(const char*, char)' conflicts with built-in declaration 'char* strrchr(const char*, int)' [-Wbuiltin-declaration-mismatch]
+   11 |         *strrchr(const char*, char),
+      |          ^~~~~~~
+../incl/string.h:17:9: warning: declaration of 'int strncmp(const char*, const char*, int)' conflicts with built-in declaration 'int strncmp(const char*, const char*, long unsigned int)' [-Wbuiltin-declaration-mismatch]
+   17 |         strncmp(const char*, const char*, int),
+      |         ^~~~~~~
+../incl/string.h:18:9: warning: declaration of 'int strlen(const char*)' conflicts with built-in declaration 'long unsigned int strlen(const char*)' [-Wbuiltin-declaration-mismatch]
+   18 |         strlen(const char*),
+      |         ^~~~~~
+../incl/string.h:19:9: warning: declaration of 'int strspn(const char*, const char*)' conflicts with built-in declaration 'long unsigned int strspn(const char*, const char*)' [-Wbuiltin-declaration-mismatch]
+   19 |         strspn(const char*, const char*),
+      |         ^~~~~~
+../incl/string.h:20:9: warning: declaration of 'int strcspn(const char*, const char*)' conflicts with built-in declaration 'long unsigned int strcspn(const char*, const char*)' [-Wbuiltin-declaration-mismatch]
+   20 |         strcspn(const char*, const char*);
+      |         ^~~~~~~
+../incl/string.h:23:10: warning: declaration of 'void* memchr(const char*, int, int)' conflicts with built-in declaration 'void* memchr(const void*, int, long unsigned int)' [-Wbuiltin-declaration-mismatch]
+   23 |         *memchr(const char *, int, int),
+      |          ^~~~~~
+../incl/string.h:24:10: warning: declaration of 'void* memcpy(char*, const char*, int)' conflicts with built-in declaration 'void* memcpy(void*, const void*, long unsigned int)' [-Wbuiltin-declaration-mismatch]
+   24 |         *memcpy(char *, const char *, int),
+      |          ^~~~~~
+../incl/string.h:25:10: warning: declaration of 'void* memset(void*, int, int)' conflicts with built-in declaration 'void* memset(void*, int, long unsigned int)' [-Wbuiltin-declaration-mismatch]
+   25 |         *memset(void *, int, int);
+      |          ^~~~~~
+../incl/string.h:26:9: warning: declaration of 'int memcmp(const char*, const char*, int)' conflicts with built-in declaration 'int memcmp(const void*, const void*, long unsigned int)' [-Wbuiltin-declaration-mismatch]
+   26 |     int memcmp(const char *, const char *, int);
+      |         ^~~~~~
+In file included from ../incl/libc.h:7,
+                 from main.C:31:
+../incl/math.h:11:39: warning: declaration of 'double jn(double)' conflicts with built-in declaration 'double jn(int, double)' [-Wbuiltin-declaration-mismatch]
+   11 | extern double j0(double), j1(double), jn(double);
+      |                                       ^~
+In file included from ../incl/grp.h:4,
+                 from ../incl/osfcn.h:6,
+                 from main.C:32:
+../incl/stdio.h:72:12: warning: declaration of 'int fputs(const char*, _iobuf*)' conflicts with built-in declaration 'int fputs(const char*, void*)' [-Wbuiltin-declaration-mismatch]
+   72 | extern int fputs(const char *s, FILE *stream);
+      |            ^~~~~
+../incl/stdio.h:74:12: warning: declaration of 'int fprintf(_iobuf*, const char*, ...)' conflicts with built-in declaration 'int fprintf(void*, const char*, ...)' [-Wbuiltin-declaration-mismatch]
+   74 | extern int fprintf(FILE*, const char* ...);
+      |            ^~~~~~~
+../incl/stdio.h:77:12: warning: declaration of 'int fscanf(_iobuf*, const char*, ...)' conflicts with built-in declaration 'int fscanf(void*, const char*, ...)' [-Wbuiltin-declaration-mismatch]
+   77 | extern int fscanf(FILE*, const char* ...);
+      |            ^~~~~~
+../incl/stdio.h:78:12: warning: declaration of 'int sscanf(char*, const char*, ...)' conflicts with built-in declaration 'int sscanf(const char*, const char*, ...)' [-Wbuiltin-declaration-mismatch]
+   78 | extern int sscanf(char*, const char* ...);
+      |            ^~~~~~
+../incl/stdio.h:80:12: warning: declaration of 'int fwrite(const char*, int, int, _iobuf*)' conflicts with built-in declaration 'long unsigned int fwrite(const void*, long unsigned int, long unsigned int, void*)' [-Wbuiltin-declaration-mismatch]
+   80 | extern int fwrite(const char*, int, int, FILE*);
+      |            ^~~~~~
+../incl/stdio.h:91:12: warning: declaration of 'int fputc(int, _iobuf*)' conflicts with built-in declaration 'int fputc(int, void*)' [-Wbuiltin-declaration-mismatch]
+   91 | extern int fputc(int, FILE*);
+      |            ^~~~~
+../incl/stdio.h:110:17: warning: declaration of 'int vprintf(char*, va_list)' conflicts with built-in declaration 'int vprintf(const char*, char*)' [-Wbuiltin-declaration-mismatch]
+  110 | extern int      vprintf(char*, va_list),
+      |                 ^~~~~~~
+../incl/stdio.h:111:17: warning: declaration of 'int vfprintf(_iobuf*, char*, va_list)' conflicts with built-in declaration 'int vfprintf(void*, const char*, char*)' [-Wbuiltin-declaration-mismatch]
+  111 |                 vfprintf(FILE*, char*, va_list),
+      |                 ^~~~~~~~
+../incl/stdio.h:112:17: warning: declaration of 'int vsprintf(char*, char*, va_list)' conflicts with built-in declaration 'int vsprintf(char*, const char*, char*)' [-Wbuiltin-declaration-mismatch]
+  112 |                 vsprintf(char*, char*, va_list),
+      |                 ^~~~~~~~
+main.C:42:19: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   42 | char* prog_name = "<<AT&T C++ Language System <3.0.3> 05/05/94>>";
+      |                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+main.C:43:26: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   43 | static char* prog_vers = "__cfront_version_303_xxxxxxxx";
+      |                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+main.C:44:23: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   44 | char* src_file_name = "";
+      |                       ^~
+main.C:45:21: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   45 | char* line_format = "\n# %d \"%s\"\n";
+      |                     ^~~~~~~~~~~~~~~~~
+main.C: In function 'void run()':
+main.C:410:45: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+  410 |                 Pname n = new name( st_name("__sti__") );
+      |                                             ^~~~~~~~~
+main.C:429:45: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+  429 |                 Pname n = new name( st_name("__std__") );
+      |                                             ^~~~~~~~~
+main.C: In function 'int main(int, char**)':
+main.C:663:25: warning: ISO C++17 does not allow 'register' storage class specifier [-Wregister]
+  663 |         register char * cp;
+      |                         ^~
+main.C:664:23: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+  664 |         char* afile = "";
+      |                       ^~
+main.C:762:55: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+  762 |                                         line_format = "\n#line %d \"%s\"\n";
+      |                                                       ^~~~~~~~~~~~~~~~~~~~~

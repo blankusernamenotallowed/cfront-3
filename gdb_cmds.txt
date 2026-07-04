@@ -1,0 +1,13 @@
+set pagination off
+break gram.y:1442
+run +L
+printf "AT 1442 (after RC, before NEXTTOK): yychar=%d\n", yychar
+break lalex
+continue
+printf "lalex CALLED - bt:\n"
+bt 3
+delete
+tbreak gram.y:1451
+continue
+printf "AT 1451 (before la_backup): yychar=%d\n", yychar
+quit

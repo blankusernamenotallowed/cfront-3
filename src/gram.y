@@ -497,8 +497,19 @@ inline Pname Ncopy(Pname n)
 }
 %{
 #include "tqueue.h"
-extern YYSTYPE yylval, yyval;
+extern YYSTYPE yylval;
+YYSTYPE yyval;	// classic-yacc global $$ (peeked at by lalex.C); see Makefile sed
 extern int yyparse();
+
+// Forward declarations for grammar-action helpers defined at end of file
+// (modern C++ requires a declaration before use).
+static Pname enumcheck( Pname n );
+static void  check_tag();
+static void  hoist_al();
+static void  arg_redec( Pname fn );
+static Pname dummy_dtor( TOK q, TOK d );
+static Pname dummy_dtor();
+static bit   check_if_base( Pclass c1, Pclass c2 );
 
 // in_typedef should allow for nested in_typedef
 extern int	declTag;	 // !1: inline, virtual mod permitted
@@ -518,7 +529,9 @@ int	in_mem_fct=0;    // !0 when parsing member function definition
 Ptempl_inst pti = 0; // explicit template class: class X<int> {};
 
 #define yylex lalex
-#define NEXTTOK() ( (yychar==-1) ? (yychar=yylex(),yychar) : yychar )
+/* bison's "no lookahead" sentinel is YYEMPTY (-2), not yacc's -1; treat any
+   negative yychar as empty so a real token gets fetched. */
+#define NEXTTOK() ( (yychar<0) ? (yychar=yylex(),yychar) : yychar )
 #define EXPECT_ID() must_be_id = 1
 #define NOT_EXPECT_ID() must_be_id = 0
 
@@ -1438,7 +1451,7 @@ class_dcl	:  class_head cl_mem_list RC
 					break;
 				}
 				la_backup(yychar,yylval);
-				yychar = -1;
+				yychar = YYEMPTY;	/* bison empty sentinel, was -1 */
 				restore_text();
 				++bl_level; // scope weirdness!
 				++in_mem_fct;
@@ -2337,11 +2350,11 @@ statement	:  simple sm
 				--scdp;
 				$$ = new estmt(SWITCH,$<l>1,$<pe>3,$<ps>4); 
 			}
-		|  ID COLON { $$ = $1; stmt_seen=1; } caselab_stmt
+		|  ID COLON { $<pn>$ = $<pn>1; stmt_seen=1; } caselab_stmt
 			{	Pname n = $<pn>3;
 				$$ = new lstmt(LABEL,n->where,n,$<ps>4);
 			}
-		|  TNAME COLON { $$ = new name($<pn>1->string); stmt_seen=1; } caselab_stmt
+		|  TNAME COLON { $<pn>$ = new name($<pn>1->string); stmt_seen=1; } caselab_stmt
 			{	Pname n = $<pn>3;
 				$$ = new lstmt(LABEL,n->where,n,$<ps>4);
 			}

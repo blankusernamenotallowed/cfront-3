@@ -233,10 +233,11 @@ public:
 };
 
 // Member function templates
+Pname has_templ_instance(Pname,Pexpr,bit=0);	// default arg lives on this decl
 class function_template : public basic_template {
 /* SBL: go through these */
   friend Pbinding is_ftempl_match(Pexpr,Pfunt);
-  friend Pname has_templ_instance(Pname,Pexpr,bit=0);
+  friend Pname has_templ_instance(Pname,Pexpr,bit);
   friend class templ_compilation;
   friend class templ;
   friend class templ_inst;

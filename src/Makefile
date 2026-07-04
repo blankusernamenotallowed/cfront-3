@@ -1,5 +1,7 @@
 CXX	?=	g++
-CCFLAGS	=	-I../incl
+# -fpermissive: build pre-standard (1991) C++ with a modern g++
+# -std=gnu++98 + relaxed diagnostics for legacy constructs
+CCFLAGS	=	-I../incl -fpermissive -std=gnu++98 -w -fno-strict-aliasing -ftrivial-auto-var-init=zero
 
 #MPMACRO = PATCH
 MPMACRO = MUNCH
@@ -33,6 +35,13 @@ y.tab.C yystype.h: gram.y $(COMDEP0)
 	mv y.tab.c y.tab.C
 	mv y.tab.h yystype.h
 	sed -i -e 's/^#ifdef __cplusplus/#if 0/' y.tab.C
+	# Modern bison emits an `enum yytokentype`; token.h already provides the
+	# same tokens as #defines (identical values), which breaks the enum.
+	# Disable the enum block and keep bison's compatibility #defines.
+	sed -i -e 's/^#ifndef YYTOKENTYPE/#if 0/' y.tab.C yystype.h
+	# Classic yacc kept `yyval` global; bison makes it a yyparse() local.
+	# lalex.C peeks at the global, so bind the parser's yyval to the global.
+	sed -i -e 's/^  YYSTYPE yyval;$$/  extern YYSTYPE yyval;/' y.tab.C
 
 alloc.o: alloc.C $(COMDEP)
 	$(CXX) $(CCFLAGS) -c alloc.C 
