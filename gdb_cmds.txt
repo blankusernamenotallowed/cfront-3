@@ -1,13 +1,13 @@
 set pagination off
-break gram.y:1442
-run +L
-printf "AT 1442 (after RC, before NEXTTOK): yychar=%d\n", yychar
-break lalex
-continue
-printf "lalex CALLED - bt:\n"
-bt 3
-delete
-tbreak gram.y:1451
-continue
-printf "AT 1451 (before la_backup): yychar=%d\n", yychar
+handle SIGSEGV stop nopass
+run +L +f1.cpp +a1
+frame 1
+printf "s (looking for)     = %s\n", s
+printf "k_id                = %d\n", k_id
+print k_name
+printf "k_name->string      = %s\n", k_name->string
+print k_name->tp
+frame 2
+printf "\n--- dcl3.C:1808 dclass: n = ---\n"
+print n->string
 quit

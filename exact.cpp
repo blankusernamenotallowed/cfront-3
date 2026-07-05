@@ -1,7 +1,3 @@
-# 0 "exact.cpp"
-# 0 "<built-in>"
-# 0 "<command-line>"
-# 1 "exact.cpp"
 template<class T>
 class Stack {
     T data_[16];

@@ -139,7 +139,7 @@ void run()
 
 			if (
 				(rr=nn->dcl(gtbl,EXTERN))==0
-				||
+				|
 				nn->base==0
 				||
 				(error_count>oerror_count)
