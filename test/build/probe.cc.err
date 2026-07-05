@@ -1,0 +1,3 @@
+/usr/lib/gcc/x86_64-pc-cygwin/15.3.0/../../../../x86_64-pc-cygwin/bin/ld: /usr/lib/gcc/x86_64-pc-cygwin/15.3.0/../../../libmsys-2.0.a(libcmain.o): in function `main':
+/d/S/B/src/msys2-runtime/winsup/cygwin/lib/libcmain.c:37:(.text.startup+0x92): undefined reference to `WinMain'
+collect2: error: ld returned 1 exit status
