@@ -101,7 +101,7 @@ static inline int doublehashinc(unsigned int h, int s)
 // IWBNI we knew whether we were being called as an lvalue or rvalue.
 // If the former, then we wouldn't have to scan through the whole
 // table just to tell if we should rehash or not.  Sigh.
-int& Hash::operator [](int key)
+hashword& Hash::operator [](hashword key)
 {
   unsigned int hashval = key_hash(key) ;
   while (1)
@@ -140,8 +140,8 @@ int& Hash::operator [](int key)
 /* This seems convoluted, but it does whatever you want without
    redundant probing of the hash table. */
 
-void Hash::action (int key, int val, insert_action what,
-		   int& found, int& old_val)
+void Hash::action (hashword key, hashword val, insert_action what,
+		   int& found, hashword& old_val)
 {
   unsigned int hashval = key_hash(key) ;
   while (1)
@@ -206,7 +206,7 @@ int Hash::contains(int key)
 }
 #endif
 
-int Hash::del(int key)
+int Hash::del(hashword key)
 {
   unsigned int hashval = key_hash(key) ;
   int h = hashval % size ;
@@ -318,23 +318,23 @@ main()
 
 */
 
-int pointer_hasheq (int a, int b)
+int pointer_hasheq (hashword a, hashword b)
 {
     return a == b;
 };
 
-unsigned int pointer_hash_fcn (int x)
+unsigned int pointer_hash_fcn (hashword x)
 {
     unsigned X = (unsigned) x;
-    return ((X << 16) | (X >> 16)) ^ x;
+    return ((X << 16) | (X >> 16)) ^ (unsigned)x;
 }
 
-int string_hasheq (int a, int b)
+int string_hasheq (hashword a, hashword b)
 {
     return !strcmp((char *)a, (char *) b);
 };
 
-unsigned int string_hash_fcn (int x)
+unsigned int string_hash_fcn (hashword x)
 {
     char * str = (char *)x;
     int l = strlen(str);

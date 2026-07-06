@@ -26,6 +26,7 @@ any actual or intended publication of such source code.
 #define _HASH_H
 
 #include <string.h>
+#include <stdint.h>
 
 typedef void (*Error_Proc) (const char*) ;
 
@@ -34,15 +35,19 @@ extern Error_Proc set_Hash_error_handler (Error_Proc f) ;
 
 #ifndef _hash_typedefs
 #define _hash_typedefs 1
-typedef void (*intProc)(int) ;
+typedef void (*intProc)(intptr_t) ;
 #endif
 
 #define DEFAULT_INITIAL_HASH_SIZE 100
 
+/* keys and values in this hash carry node POINTERS; use a pointer-width integer
+   so they are not truncated on 64-bit (works on ILP32, LP64 and LLP64). */
+typedef intptr_t hashword;
+
 struct HashTableEntry
 {
-  int                   key ;
-  int                   cont ;
+  hashword              key ;
+  hashword              cont ;
   char                  status ;
 } ;
 
@@ -57,11 +62,11 @@ class Hash
   int                   entry_count ;
 
 public:
-  unsigned int		(*key_hash_function)(int)  ;
-   int            	(*key_key_equality_function) (int, int) ;
+  unsigned int		(*key_hash_function)(hashword)  ;
+   int            	(*key_key_equality_function) (hashword, hashword) ;
 
-  unsigned int          key_hash(int  a) ;
-  int                   key_key_eq(int a, int  b);    
+  unsigned int          key_hash(hashword  a) ;
+  int                   key_key_eq(hashword a, hashword  b);
 
                         Hash(int sz) ;
                         Hash(Hash& a) ;
@@ -78,11 +83,11 @@ public:
   void                  resize(int newsize) ;
 
   enum insert_action	{ probe, insert, replace };
-  void			action (int key, int val, insert_action what,
-				int& found, int& old_val);
-  int&                  operator [] (int  k) ;
-  int                   contains(int  key) ;
-  int                   del(int  key) ;
+  void			action (hashword key, hashword val, insert_action what,
+				int& found, hashword& old_val);
+  hashword&             operator [] (hashword  k) ;
+  int                   contains(hashword  key) ;
+  int                   del(hashword  key) ;
 
   void                  apply (intProc f) ;
   void                  error(const char* msg) ;
@@ -104,11 +109,11 @@ public:
   void                  advance() ;
   void                  reset() ;
   void                  reset(Hash& l) ;
-  const int&            key() ;
-  int&                  get() ;
+  const hashword&       key() ;
+  hashword&             get() ;
 } ;
 
-inline unsigned int Hash::key_hash(int a)
+inline unsigned int Hash::key_hash(hashword a)
 {
 #ifdef HASHFUNCTION
   return HASHFUNCTION(a) ;
@@ -117,7 +122,7 @@ inline unsigned int Hash::key_hash(int a)
 #endif
 }
 
-inline int Hash::key_key_eq(int a, int b)
+inline int Hash::key_key_eq(hashword a, hashword b)
 {
 #ifdef EQUALITYFUNCTION
   return EQUALITYFUNCTION(a, b) ;
@@ -187,22 +192,22 @@ inline int HashWalker::operator ! ()
 }
 
 
-inline const int& HashWalker::key()
+inline const hashword& HashWalker::key()
 {
   if (pos < 0)
     h->error("operation on null Walker") ;
   return h->tab[pos].key ;
 }
 
-inline int& HashWalker::get()
+inline hashword& HashWalker::get()
 {
   if (pos < 0)
     h->error("operation on null Walker") ;
   return h->tab[pos].cont ;
 }
 
-int pointer_hasheq(int, int);
-unsigned int pointer_hash_fcn(int);
+int pointer_hasheq(hashword, hashword);
+unsigned int pointer_hash_fcn(hashword);
 
 class pointer_hash : public Hash {
   public:
@@ -214,8 +219,8 @@ class pointer_hash : public Hash {
     pointer_hash (pointer_hash& h) : Hash (h) {};
 };
 
-int string_hasheq(int, int);
-unsigned int string_hash_fcn(int);
+int string_hasheq(hashword, hashword);
+unsigned int string_hash_fcn(hashword);
 
 class string_hash : public Hash {
     public:

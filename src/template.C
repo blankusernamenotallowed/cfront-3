@@ -1167,8 +1167,8 @@ templ_inst::data_copy(Pdata dat, Pcons &templ_refs)
 
      	for (Plist fformal = dat->formals, cformal = inst_formals;
   	     fformal; fformal = fformal->l, cformal = cformal->l) {
-		fcorr[int(fformal->f)] = int(cformal->f);
-		if (fcorr[int(fformal->f)] != int(cformal->f))
+		fcorr[hashword(fformal->f)] = hashword(cformal->f);
+		if (fcorr[hashword(fformal->f)] != hashword(cformal->f))
 			error ('i', "templ_inst::fuction_copy: hash table bug");
       	}
 
@@ -1176,7 +1176,7 @@ templ_inst::data_copy(Pdata dat, Pcons &templ_refs)
       	info.hook_info = this;
 
       	templ_refs = ref_copy(fcorr,info,templ_refs);
-      	if (fcorr[int(def->namep)] != int(tname))
+      	if (fcorr[hashword(def->namep)] != hashword(tname))
   	  	error ('i', "Y to instantiationTN correspondence is missing");
     
       	copy_tree(root,info,&fcorr);
@@ -3510,11 +3510,11 @@ void
 establish_class_subtree_correspondence(pointer_hash &h, Pname key_tname,
 					    Pname value_tname) 
 {
-  h[int(key_tname)] = int(value_tname) ;
-  h[int(key_tname->tp)] = int(value_tname->tp) ;
-  h[int(Pbase(key_tname->tp)->b_name)] =
+  h[hashword(key_tname)] = hashword(value_tname) ;
+  h[hashword(key_tname->tp)] = hashword(value_tname->tp) ;
+  h[hashword(Pbase(key_tname->tp)->b_name)] =
     int(Pbase(value_tname->tp)->b_name) ;
-  h[int(Pbase(key_tname->tp)->b_name->tp)] =
+  h[hashword(Pbase(key_tname->tp)->b_name->tp)] =
     int(Pbase(value_tname->tp)->b_name->tp) ;
 }
 
@@ -3607,13 +3607,13 @@ templ_inst::class_copy(Pcons &templ_refs, bool recopy)
   if (recopy) {
     // remove the class def node from the table, so that it's attributes are
     // copied. 
-    corr->del(int(Pbase(def->namep->tp)->b_name->tp)) ;
-    corr->del(int(Pbase(def->namep->tp)->b_name)) ;
-    corr->del(int(def->namep->tp)) ;
+    corr->del(hashword(Pbase(def->namep->tp)->b_name->tp)) ;
+    corr->del(hashword(Pbase(def->namep->tp)->b_name)) ;
+    corr->del(hashword(def->namep->tp)) ;
     
-    corr->del(int(tname->tp)) ;
-    corr->del(int(Pbase(tname->tp)->b_name)) ;
-    corr->del(int(Pbase(tname->tp)->b_name->tp)) ;
+    corr->del(hashword(tname->tp)) ;
+    corr->del(hashword(Pbase(tname->tp)->b_name)) ;
+    corr->del(hashword(Pbase(tname->tp)->b_name->tp)) ;
   }else corr = new pointer_hash(default_copy_hash_size) ;
   
   { // copy the formals & install them in the correspondence table
@@ -3625,7 +3625,7 @@ templ_inst::class_copy(Pcons &templ_refs, bool recopy)
       *copy_name = *formal->f ;
       copy_name->n_tbl_list = 0 ;
       last = last->l = new name_list(copy_name, 0) ;
-      (*corr)[int(formal->f)] = (int)copy_name ;
+      (*corr)[hashword(formal->f)] = (hashword)copy_name ;
     }
     inst_formals = dummy_formal.l ;
   }
@@ -3648,7 +3648,7 @@ templ_inst::class_copy(Pcons &templ_refs, bool recopy)
     info.node_hook = ::copy_hook ;
     info.hook_info = this ;
     
-    (*corr)[int(def->namep)] = int(tname) ; // make the tnames correspond
+    (*corr)[hashword(def->namep)] = hashword(tname) ; // make the tnames correspond
 
     templ_refs = ref_copy(*corr, info, templ_refs) ;
     Pnode root = def->basep ;	// start the copy at the cobj node
@@ -3751,8 +3751,8 @@ templ_inst::function_copy(Pfunt fnt, Pcons &templ_refs)
      for (Plist fformal = fnt->formals, cformal = inst_formals;
 	  fformal; fformal = fformal->l, cformal = cformal->l)
      {
-	fcorr[int(fformal->f)] = int(cformal->f) ;
-	if (fcorr[int(fformal->f)] != int(cformal->f))
+	fcorr[hashword(fformal->f)] = hashword(cformal->f) ;
+	if (fcorr[hashword(fformal->f)] != hashword(cformal->f))
 		error ('i', "templ_inst::fuction_copy: hash table bug");
       }
 
@@ -3760,7 +3760,7 @@ templ_inst::function_copy(Pfunt fnt, Pcons &templ_refs)
       info.hook_info = this;
 
       templ_refs = ref_copy(fcorr,info,templ_refs);
-      if (fcorr[int(def->namep)] != int(tname))
+      if (fcorr[hashword(def->namep)] != hashword(tname))
     	  error ('i', "Y to instantiationTN correspondence is missing");
     
       copy_tree(root,info,&fcorr);
@@ -4169,8 +4169,8 @@ funct_inst::tfct_copy(Pcons &templ_refs, bool recopy)
   	if (recopy) {
     		// remove the function def node from the table, 
     		// so that it's attributes are copied. 
-    		corr->del(int(def->fn));
-    	 	corr->del(int(tname));
+    		corr->del(hashword(def->fn));
+    	 	corr->del(hashword(tname));
   	}
   	else corr = new pointer_hash(default_copy_hash_size) ;
   
@@ -4183,7 +4183,7 @@ funct_inst::tfct_copy(Pcons &templ_refs, bool recopy)
       		*copy_name = *formal->f;
       		copy_name->n_tbl_list = 0;
       		last = last->l = new name_list(copy_name, 0);
-      		(*corr)[int(formal->f)] = (int)copy_name;
+      		(*corr)[hashword(formal->f)] = (hashword)copy_name;
     	}
     	inst_formals = dummy_formal.l;
   
@@ -4203,7 +4203,7 @@ funct_inst::tfct_copy(Pcons &templ_refs, bool recopy)
 	fct_node = Pfct(tname->tp);
 
  	// make the tnames correspond ???
- 	(*corr)[int(def->fn)] = int(tname); 
+ 	(*corr)[hashword(def->fn)] = hashword(tname); 
 	templ_refs = ref_copy(*corr,info,templ_refs);
     	copy_tree(root,info,corr);
 	return 0;

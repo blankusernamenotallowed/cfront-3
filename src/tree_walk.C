@@ -163,9 +163,10 @@ Hash *patch_tree::ht = 0;
 
 Pnode patch_tree::probe(Pnode n)
 {
-	int found=0, replacement=0;
+	int found=0;
+	hashword replacement=0;
 
-	ht->action((int)n, 0, Hash::probe, found, replacement);
+	ht->action((hashword)n, 0, Hash::probe, found, replacement);
 	return found ? (Pnode)replacement : n;
 }
 
@@ -484,12 +485,12 @@ walker::pre_act_on_node (Pnode node, node_class nc,
 /* node_copy is != node when a fetcher is in use */
 
     int found;
-    int old_node;
+    hashword old_node;
     tree_node_action action;
     Pnode new_node;
     int register_in_hash = 1;
 
-    nodes_seen_hash->action((int)node, 0, Hash::probe, found, old_node);
+    nodes_seen_hash->action((hashword)node, 0, Hash::probe, found, old_node);
 
     if(found) {
 	new_node = Pnode(old_node);
@@ -505,17 +506,18 @@ walker::pre_act_on_node (Pnode node, node_class nc,
 			   depth, orig_addr, *cur_tree,
 			   register_in_hash);
 
-    int zero1 = 0, zero2 = 0;
+    int zero1 = 0;
+    hashword zero2 = 0;
     if(action != tna_error && !fetching () && new_node != node) {
 	replacement = new_node;
 	if(register_in_hash)
-	    nodes_seen_hash->action((int)node, 
-				    (int)new_node, 
+	    nodes_seen_hash->action((hashword)node,
+				    (hashword)new_node,
 				    Hash::insert, zero1, zero2);
     }
     else {
 	if(register_in_hash)
-	    nodes_seen_hash->action((int)node, (int) node, Hash::insert, zero1, zero2);
+	    nodes_seen_hash->action((hashword)node, (hashword) node, Hash::insert, zero1, zero2);
     }
     return action;
 }			   
